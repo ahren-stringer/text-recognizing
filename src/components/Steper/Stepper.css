@@ -1,0 +1,4 @@
+.MuiStepLabel-label{
+    color: var(--bs-body-color);
+    font-size: 1rem;
+}
