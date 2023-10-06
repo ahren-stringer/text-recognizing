@@ -75,4 +75,4 @@ export function hh(props: StepIconProps){
 * Step Labels (Notes)
 */
 
-export const steps: string[] = ['Выберите язык', 'Загрузите файл', 'Переведите'];
+export const steps: string[] = ['Выберите язык', 'Загрузите изображение', 'Переведите'];

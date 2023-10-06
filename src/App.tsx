@@ -19,7 +19,7 @@ function App() {
       <h1 className='text-center py-5'
         style={{ paddingBottom: "53px !important;" }}
       >
-        Распознование текста
+        Распознование текста по картинке
       </h1>
       <Steper />
       <RecognizeContext.Provider value={recognize}>
@@ -50,7 +50,7 @@ type Props = {
   children: JSX.Element,
 };
 const Col = ({ children }: Props) => (
-  <div className='col'>
+  <div className='col-lg-4 col-sm-12 mb-3'>
     {children}
   </div>
 );

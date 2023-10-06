@@ -21,7 +21,7 @@ function LungSelect() {
         <select
           onChange={(event) => {langChange(event) }}
           id="langs"
-          className="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+          className="form-select form-select-lg" aria-label=".form-select-lg example"
         >
           <option value="rus" selected>Русский</option>
           <option value="eng">English</option>
