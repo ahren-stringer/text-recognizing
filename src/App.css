@@ -109,3 +109,9 @@
 .input-file input[type=file]:disabled + .input-file-btn {
 	background-color: #eee;
 }
+
+.result__restart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

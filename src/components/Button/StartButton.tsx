@@ -1,7 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { RecognizeContext, RecognizeDispatchContext } from '../../App';
 import Recognize from '../../servises/recognize';
 import Tesseract from 'tesseract.js';
+import { recognizeState } from '../../reducers/recognizeReducer';
 
 function StartButton() {
 
@@ -16,6 +17,8 @@ function StartButton() {
 
   let dispatch = useContext(RecognizeDispatchContext);
   let recognize = useContext(RecognizeContext);
+
+  let [disabledBtn, setDisabledBtn] = useState<boolean>(false)
 
   function displayResult(text: any) {
     dispatch({ type: 'set_result', value: '' });
@@ -33,13 +36,16 @@ function StartButton() {
 
   const doRecognize = () => {
     dispatch({ type: 'loading', value: true });
+
+    setDisabledBtn(true)
+
     if (recognize?.file) {
       rec(recognize?.file, recognize?.lang, updateProgress)
         .then(displayResult)
         .catch(err=> console.log(err))
     }
   };
-
+debugger
   return (
 
     <button
@@ -47,6 +53,7 @@ function StartButton() {
       type="button"
       id="start"
       className='btn btn-primary button--start'
+      disabled={!recognize?.file ? true : recognize.disabledBtn }
     >
       Начать обработку
     </button>

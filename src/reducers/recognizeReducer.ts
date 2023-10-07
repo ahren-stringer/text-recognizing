@@ -2,7 +2,8 @@ export type recognizeState = {
   file: null | any,
   lang: string,
   result: null | string,
-  isLoading: boolean;
+  isLoading: boolean,
+  disabledBtn: boolean
 }
 
 // type recognizeReducerAction = recognizeState & { type: string; }
@@ -12,6 +13,7 @@ export const recognizeInit: recognizeState = {
   lang: 'rus',
   result: null,
   isLoading: false,
+  disabledBtn: false
 };
 
 type Action<K, V = void> = V extends void ? { type: K } : { type: K } & V
@@ -22,6 +24,8 @@ export type recognizeReducerAction =
   | Action<'choose_fille', { value: any }>
   | Action<'set_result', { value: string }>
   | Action<'loading', { value: boolean }>
+  | Action<'clear_all'>
+  | Action<'disable_btn'>
 
 export function recognizeReducer(state: recognizeState = recognizeInit, action: recognizeReducerAction): recognizeState {
   switch (action.type) {
@@ -43,6 +47,14 @@ export function recognizeReducer(state: recognizeState = recognizeInit, action: 
     case 'loading': {
       return {
         ...state, isLoading: action.value
+      }
+    }
+    case 'clear_all': {
+      return recognizeInit
+    }
+    case 'disable_btn': {
+      return {
+        ...state, disabledBtn: !state.disabledBtn
       }
     }
     // default: {
